@@ -6,14 +6,55 @@
 <MudSnackbarProvider />
 
 <MudLayout>
-    <MudAppBar Elevation="1">
+    <MudAppBar Elevation="0">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@DrawerToggle" />
-        <MudText Typo="Typo.h6" Class="ml-2">Application</MudText>
+        <MudDivider Vertical="true" FlexItem="true" Class="mx-3 my-3" />
+        <MudBreadcrumbs Items="_breadcrumbs" Class="d-none d-md-flex" />
+
         <MudSpacer />
-        <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle" />
-        <MudLink Href="https://learn.microsoft.com/aspnet/core/" Target="_blank" Color="Color.Inherit" Underline="Underline.None">
-            About
-        </MudLink>
+        <MudPaper Elevation="0" Width="440px" Class="mud-background-gray rounded-lg px-3 d-none d-md-flex">
+            <MudTextField T="string" @bind-Value="_busca" Placeholder="Pesquisar..." Underline="false" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" Margin="Margin.Dense" />
+        </MudPaper>
+        <MudSpacer />
+
+        <MudStack Row="true" Spacing="1" AlignItems="AlignItems.Center">
+            <MudIconButton Icon="@DarkLightModeButtonIcon" Color="Color.Inherit" OnClick="@DarkModeToggle" />
+
+            <MudMenu AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
+                <ActivatorContent>
+                    @* padding no wrapper (e não no MudBadge) para o badge continuar colado no ícone *@
+                    <div class="d-flex pa-3 cursor-pointer">
+                        <MudBadge Content="@_notificacoes.Count" Color="Color.Error">
+                            <MudIcon Icon="@Icons.Material.Outlined.Notifications" Size="Size.Medium" />
+                        </MudBadge>
+                    </div>
+                </ActivatorContent>
+                <ChildContent>
+                    <MudText Typo="Typo.subtitle2" Class="px-4 pt-2 pb-1">Notificações</MudText>
+                    <MudDivider Class="mb-1" />
+                    @foreach (var notificacao in _notificacoes)
+                    {
+                        <MudMenuItem>
+                            <MudText Typo="Typo.body2">@notificacao.Titulo</MudText>
+                            <MudText Typo="Typo.caption" Class="mud-text-secondary">@notificacao.Tempo</MudText>
+                        </MudMenuItem>
+                    }
+                </ChildContent>
+            </MudMenu>
+
+            <MudDivider Vertical="true" FlexItem="true" Class="mx-3 my-4" />
+
+            <MudMenu AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
+                <ActivatorContent>
+                    <MudStack Spacing="0" Class="d-none d-md-flex">
+                        <MudText Typo="Typo.subtitle2">Alex Morgan</MudText>
+                        <MudChip T="string" Size="Size.Small" Color="Color.Success" Variant="Variant.Text" Class="ma-0">Online</MudChip>
+                    </MudStack>
+                    <MudText Typo="Typo.caption" Class="mud-text-secondary">alex.morgan@afya.com.br</MudText>
+                    
+                </ActivatorContent>
+            </MudMenu>
+        </MudStack>
     </MudAppBar>
 
     <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
