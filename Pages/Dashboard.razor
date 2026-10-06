@@ -4,7 +4,7 @@
 
 <CabecalhoPagina Titulo="Dashboard" Subtitulo="Visão geral da plataforma e indicadores de desempenho.">
     <Acoes>
-        <SeletorPeriodo Opcoes="DashboardData.Periodos" @bind-Value="_periodo" />
+        <SeletorPeriodo Opcoes="DashboardData.Periodos" @bind-Valor="_periodo" />
         <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" StartIcon="@Icons.Material.Filled.Add">Novo Projeto</MudButton>
     </Acoes>
 </CabecalhoPagina>
@@ -16,6 +16,23 @@
         <KpiCard Kpi="kpi" />
         </MudItem>
     }
+    <MudItem xs="12" lg="7">
+        <GraficoReceita Meses="DashboardData.Meses" Receita="DashboardData.ReceitaMensal" Meta="DashboardData.MetaMensal" />
+    </MudItem>
+    <MudItem xs="12" lg="5">
+        <GraficoDistribuicaoClientes Total="DashboardData.TotalClientes" Segmentos="DashboardData.SegmentosClientes" />
+    </MudItem>
+
+    <MudItem xs="12" lg="7">
+        <PerformanceProjetos Projetos="DashboardData.Performance" />
+    </MudItem>
+    <MudItem xs="12" lg="5">
+        <AtividadesRecentes Atividades="DashboardData.Atividades" />
+    </MudItem>
+
+    <MudItem xs="12">
+        <ProjetosRecentes Projetos="DashboardData.ProjetosRecentes" />
+    </MudItem>
 </MudGrid>
 
 @code {
