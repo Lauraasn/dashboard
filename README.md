@@ -88,3 +88,4 @@ afya-admin/
 ## Dificuldades e soluções
 
 No DashboardData.cs, criei uma classe "Períodos", com um acento, mas me referi a essa classe como "Periodos" sem acento no Dashboard. Isso causou um conflito que impediu a aplicação de compilar com sucesso. Os erros indicaram que tinha algo errado com essa palavra, mas demorei para notar o que foi exatamente que aconteceu. Assim que notei, apenas removi o acento da classe em DashboardData.cs e deu tudo certo.
+Além desse, também tive uma dificuldade com a List<> do breadcrumb (a parte que fica escrito Home/Dashboard) porque descrevi um "Private" com P maiúsculo ao invés de minúsculo. Novamente, assim que notei, corrigi e deu tudo certo.
