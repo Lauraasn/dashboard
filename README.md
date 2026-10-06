@@ -21,11 +21,10 @@ Além de entender melhor como cada parte realmente funciona, com a mão na massa
 
 - .NET 10 / Blazor WebAssembly
 - MudBlazor 9
-- (outras que você usou)
 
 ## Como executar
 
-Passo a passo para outra pessoa clonar e rodar o projeto:
+Passo a passo para clonar e rodar o projeto:
 
 ```bash
 git clone https://github.com/seu-usuario/afya-admin.git
@@ -33,7 +32,7 @@ cd afya-admin
 dotnet watch
 ```
 
-Informe também a versão do .NET SDK necessária.
+A versão do .NET SDK necessária é a 10.0.401.
 
 ## Telas
 
@@ -49,37 +48,43 @@ Informe também a versão do .NET SDK necessária.
 ### HTML gerado (DevTools)
 ![Inspeção do HTML no DevTools](docs/prints/devtools.png)
 
-Explique em poucas linhas o que o print do DevTools mostra: qual componente você inspecionou, qual HTML ele gerou e quais classes apareceram.
-
 ## Estrutura do projeto
 
-Mostre a árvore de pastas e arquivos e explique em uma linha o papel de cada pasta (`Components`, `Data`, `Layout`, `Pages`, `wwwroot`).
+afya-admin/
+├── .docs/
+│ ├── page_specification.md
+│ └── tutorial.md
+├── Components/
+│ ├── AtividadesRecentes.razor
+│ ├── CabecalhoPagina.razor
+│ ├── DashboardCard.razor
+│ ├── GraficoDistribuicaoClientes.razor
+│ ├── GraficoReceita.razor
+│ ├── KpiCard.razor
+│ ├── PerformanceProjetos.razor
+│ ├── ProjetosRecentes.razor
+│ ├── SeletorPeriodo.razor
+│ └── Ui.cs
+├── Data/
+│ └── DashboardData.cs
+├── Layout/
+│ ├── MainLayout.razor
+│ └── NavMenu.razor
+├── Pages/
+│ ├── Dashboard.razor
+│ └── NotFound.razor
+├── Properties/launchSettings.json
+├── wwwroot/
+│ ├── css/app.css
+│ ├── img/alex-morgan.jpg
+│ ├── favicon.png, icon-192.png
+│ └── index.html
+├── _Imports.razor
+├── afya-admin.csproj
+├── App.razor
+└── Program.cs
 
-## Componentes criados
-
-| Componente | Responsabilidade | Parâmetros que recebe |
-|---|---|---|
-| `DashboardCard` | ... | ... |
-| `KpiCard` | ... | ... |
-| (liste todos) | | |
-
-## O que aprendi
-
-Responda **com suas próprias palavras** (um parágrafo curto por pergunta):
-
-1. Como uma aplicação Blazor WebAssembly inicia no navegador? Qual é o papel do `index.html`, da `<div id="app">` e do `Program.cs`?
-2. Qual é a diferença entre um **Layout**, uma **Page** e um **Component** neste projeto? Dê um exemplo de cada.
-3. O que é um `RenderFragment` e como o `DashboardCard` usa esse recurso para ser reutilizado por vários cards?
-4. Como funciona o `@bind-Valor` no `SeletorPeriodo`? Qual é o papel do `ValorChanged`?
-5. Por que os dados ficam na pasta `Data`, separados dos componentes? Que vantagem isso traz se, no futuro, os dados vierem de uma API?
-6. Como o `MudGrid` com `xs`, `sm` e `lg` faz os cards de KPI se reorganizarem em telas de tamanhos diferentes?
-7. Como foi possível estilizar a página inteira sem escrever CSS? Explique o papel do tema (`MudTheme`) e das classes utilitárias.
-8. Por que o namespace do projeto é `afya_admin` e não `afya-admin`?
 
 ## Dificuldades e soluções
 
-Descreva pelo menos **dois problemas** que você enfrentou durante o desenvolvimento e como resolveu cada um.
-
-## Melhorias futuras (opcional)
-
-O que você implementaria a seguir? Se fez algum dos desafios da seção 20 do tutorial, descreva aqui.
+No DashboardData.cs, criei uma classe "Períodos", com um acento, mas me referi a essa classe como "Periodos" sem acento no Dashboard. Isso causou um conflito que impediu a aplicação de compilar com sucesso. Os erros indicaram que tinha algo errado com essa palavra, mas demorei para notar o que foi exatamente que aconteceu. Assim que notei, apenas removi o acento da classe em DashboardData.cs e deu tudo certo.
