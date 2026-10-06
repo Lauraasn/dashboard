@@ -14,7 +14,7 @@ public record ProjetoRecente(string Nome, string Icone, Color Cor, string Client
 
 public static class DashboardData 
 {
-    public static readonly string[] Períodos = { "Últimos 7 dias", "Últimos 30 dias", "Últimos 90 dias", "Personalizado"  };
+    public static readonly string[] Periodos = { "Últimos 7 dias", "Últimos 30 dias", "Últimos 90 dias", "Personalizado"  };
 
     public static readonly List<Kpi> Kpis = new()
     {
@@ -60,8 +60,8 @@ public static class DashboardData
 
     public static readonly List<ProjetoRecente> ProjetosRecentes = new()
     {
-        new("Portal Institucional", Icons.Material.Outlined.DesktopWindows, Color.Primary, "TechCorp", "Mariana Souza", "Em andamento", Color.Info),
-        new("Aplicativo Mobile", Icons.Material.Outlined.PhoneIphone, Color.Secondary, "Nova Digital", "Carlos Lima", "Em revisão", Color.Warning),
+        new("Portal Institucional", Icons.Material.Outlined.DesktopWindows, Color.Primary, "TechCorp", "Mariana Souza", "Em andamento", Color.Info, 72, "30 Set"),
+        new("Aplicativo Mobile", Icons.Material.Outlined.PhoneIphone, Color.Secondary, "Nova Digital", "Carlos Lima", "Em revisão", Color.Warning, 65, "05 Out"),
         new("Migração Cloud", Icons.Material.Outlined.Cloud, Color.Success, "CloudSystems", "Ana Martins", "Concluído", Color.Success, 100, "20 Set"),
         new("Sistema ERP", Icons.Material.Outlined.Storage, Color.Warning, "Alpha Group", "João Silva", "Em andamento", Color.Info, 48, "15 Out"),
 
